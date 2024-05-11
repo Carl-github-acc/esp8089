@@ -33,10 +33,14 @@ void sif_platform_rescan_card(unsigned insert)
 {
 }
 
+void sdmmc_ack_interrupt(struct mmc_host *mmc) { return; }
+
 void sif_platform_reset_target(void)
 {
+	int reset_code = 0;
 	printk("ESP8089 reset via GPIO %d\n", esp_reset_gpio);
-	gpio_request(esp_reset_gpio,"esp_reset");
+	reset_code = gpio_request(esp_reset_gpio,"esp_reset");
+	printk("ESP8089 reset result code %d\n", reset_code);
 	gpio_direction_output(esp_reset_gpio,0);
 	msleep(200);
 	gpio_direction_input(esp_reset_gpio);

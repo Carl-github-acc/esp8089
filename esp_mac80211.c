@@ -1927,6 +1927,7 @@ static const struct ieee80211_ops esp_mac80211_ops = {
         .add_interface = esp_op_add_interface,
         .remove_interface = esp_op_remove_interface,
         .config = esp_op_config,
+        .wake_tx_queue		= ieee80211_handle_wake_tx_queue,
 
         .bss_info_changed = esp_op_bss_info_changed,
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 28))
